@@ -23,6 +23,13 @@ Each step has it's own branch, allowing you to:
 This serves as a back-up during the presentation and as a convenience method for any one interested in this sample, 
  as it makes traversing the taken steps easier.
 
+The following steps have been defined for this project:
+1. The introduction of commands and events to the core-api.
+2. The basic Command Model as an Aggregate, the Wallet, contained in it's own package.
+3. A means to dispatch commands through a controller in the UI folder.
+4. A simple Query Model, the WalletView, which an Event Handling class updates based on events.
+5. Introduction of queries and query handlers, respectively dispatched by the UI and handled by the projector.  
+
 ## Demo Commands
 
 Pushing an application (with a manifest.yml)
