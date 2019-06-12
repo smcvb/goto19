@@ -2,10 +2,15 @@ package com.gotoams.wallet.query;
 
 import com.gotoams.wallet.coreapi.CashDepositedEvent;
 import com.gotoams.wallet.coreapi.CashWithdrawnEvent;
+import com.gotoams.wallet.coreapi.FindAllWalletsQuery;
+import com.gotoams.wallet.coreapi.FindWalletQuery;
 import com.gotoams.wallet.coreapi.WalletCreatedEvent;
 import com.gotoams.wallet.coreapi.WalletView;
 import org.axonframework.eventhandling.EventHandler;
+import org.axonframework.queryhandling.QueryHandler;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 public class WalletViewProjector {
@@ -31,5 +36,15 @@ public class WalletViewProjector {
     public void on(CashDepositedEvent event) {
         repository.findById(event.getWalletId())
                   .ifPresent(walletView -> walletView.deposit(event.getAmount()));
+    }
+
+    @QueryHandler
+    public WalletView handle(FindWalletQuery query) {
+        return repository.findById(query.getWalletId()).orElse(null);
+    }
+
+    @QueryHandler
+    public List<WalletView> handle(FindAllWalletsQuery query) {
+        return repository.findAll();
     }
 }
