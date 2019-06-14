@@ -2,8 +2,8 @@
 applications:
 - name: backup-wallet
   buildpacks:
-  - java_buildpack
+  - java_buildpack_offline
   path: target/wallet-0.0.1-SNAPSHOT.jar
   instances: 1
   services:
-   - backup-wallet-db
+   - wallet-db
