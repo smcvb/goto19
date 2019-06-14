@@ -1,9 +1,9 @@
 ---
 applications:
-- name: goto-wallet
+- name: backup-wallet
   buildpacks:
   - java_buildpack
   path: target/wallet-0.0.1-SNAPSHOT.jar
   instances: 1
   services:
-  - wallet-db
+   - backup-wallet-db
